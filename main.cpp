@@ -8,6 +8,13 @@
 
 using namespace std;
 
+
+int menu(){
+    cout << "Welcome to the program" << endl << "What would you like to do?" << endl;
+    cout << "1)  Check if the reverse of an integer is greater" << endl;
+    cout << "2)  Find prime numbers less than or equal to an integer" << endl;
+}
+
 int reverseInteger(int num){
 
     int rev_num = 0;
@@ -18,7 +25,9 @@ int reverseInteger(int num){
     return rev_num;
 
 //need to see if rev-Num is greater than userInput number
-} int primeNumbers(int num, bool is_prime){ while(num > 0){ is_prime = true;
+} int primeNumbers(int num, bool is_prime){
+    while(num > 0){
+        is_prime = true;
 
         if(num == 0 || num == 1){
             is_prime = false;
@@ -37,55 +46,52 @@ int reverseInteger(int num){
     return num;
 }
 
-int menu(){ cout << "Menu working???" << endl; int askUser; string validInput; int option1 = 1; int option2 = 2; int enterInt;
-
-    cout << "Welcome to the program" << endl << "What would you like to do?" << endl;
-    cout << "1)  Check if the reverse of an integer is greater" << endl;
-    cout << "2)  Find prime numbers less than or equal to an integer" << endl;
-    cout << "Choice: ";
-    cin >> askUser;
-
-    while (askUser == option1 || askUser == option2) {
-        if (askUser == option1) {
-            cout << "do 1 functionality ";
-            cout << "Enter an integer";
-            cin >> enterInt ;
-            cout << endl;
-            cout << "You entered" << enterInt;
-
-
-            //reverse algorithm w/ forloop
-
-            //deterimne if reverese algo is > than
-
-        }
-        if (askUser == option2) {
-            cout << "Do 2 functionality";
-
-        }//nested if statemnts for ether option 1 or option 2
-            //then add functionality
-        else {
-            cout << "You did not enter a valid number." << endl;
-            cout << "Would you like to continue?" << endl;
-            cin >> validInput;
-            cout << "Enter 'yes', 'y', 'no' or 'n'):  " << validInput;
-
-            if (validInput == "yes" || 'y') {
-                cout << "What would you like to do?";
-                cout << "1)   Check if the reverse of an integer is greater" << endl;
-                cout << "2)  Find prime numbers less than or equal to an integer" << endl;
-                cout << "Choice: ";
-            } if (validInput == "no" || "n") {
-                //quit the program!!!
-            } else {
-                cout << "You did not enter valid input.  You entered:" << validInput;
-            }
-        }
-    }
-} //end of function
-
 int main() {
-    int rev_num = 45673; int num = 15; cout << "The reverse of the number " << reverseInteger(rev_num) << endl; cout << "The prime numbers are" << primeNumbers(num, true)<< endl; std::cout << "Hello, World!" << std::endl;
+
+    int userChoice;
+    int option1 = 1;
+    int option2 = 2;
+    int enterInt;
+    string userContinue;
+
+    menu();
+
+    cout << "Enter your choice: " << endl;
+    cin >> userChoice;
+
+    if (userChoice == option1) {
+        int userReverseInt;
+        cout << "You chose 1, check if the reverse of an integer is greater." << endl;
+        cout << "Enter an integer: ";
+        cin >> userReverseInt;
+
+        int z;
+        z = reverseInteger(userReverseInt); //calling the reverse func
+        cout << "The reverse is: " <<  z << endl;
+    }
+    else if (userChoice == option2) {
+        int userPrimeInt;
+        cout << "You chose 2, Find prime numbers less than or equal to an integer." << endl;
+        cout << "Enter an integer: ";
+        cin >> userPrimeInt;
+
+        int z;
+        z= primeNumbers(userPrimeInt, true);
+        cout <<"The prime numbers are: " << z << endl;
+    }
+    else {
+        cout << "You did not enter a valid number. " << endl;
+        //where ask, continue or quit
+        do{
+
+            cout << "Would you like to continue (enter 'yes', 'y', 'no', or 'n'): ";
+            cin >> userContinue;
+
+            //add functionality to make the menu pop up again. if 1 do... if 2 do
+        } while((userContinue == "yes") || (userContinue == "y"));
+
+    }
+
 
 
 
@@ -93,3 +99,52 @@ int main() {
     return 0;
 }
 
+
+
+
+
+
+/*
+ *   int userChoice;
+    string validInput;
+    int option1 = 1;
+    int option2 = 2;
+    int enterInt;
+
+    do {
+        cout << endl;
+        menu();
+
+        cin >> userChoice;
+
+        if (userChoice == option1) {
+            int reverseInteger(int num);
+            //NOT SET UP RIGHT
+        }
+        if (userChoice == option2) {
+            int primeNumbers(int num, bool is_prime);
+            //NOT SET UP RIGHT
+        }
+
+        if(userChoice != option1 || userChoice != option2){
+            cout << "You did not enter a valid number. " << endl;
+            cout << "Would you like to continue (enter 'yes', 'y', 'no', or 'n'): ";
+            cin >> validInput;
+        }
+
+        if (validInput == "yes" || validInput == "y") {
+            cout << "What would you like to do?" << endl;
+            cout << "1)  Check if the reverse of an integer is greater" << endl;
+            cout << "2)  Find prime numbers less than or equal to an integer" << endl;
+            cout << "Choice: ";
+            cin >> userChoice;
+            //loop back to original and do 1 or 2 ()
+        }
+        if (validInput == "no" || validInput == "n") {
+            cout << "Quit Program" << endl;
+
+        } else {
+            cout << "This is not a valid choice. Enter, ('yes', 'y', 'no', or 'n'): ";
+        }
+    } while ();
+ */
