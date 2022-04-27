@@ -23,27 +23,24 @@ int reverseInteger(int num){
         num = num / 10;
     }
     return rev_num;
-
-//need to see if rev-Num is greater than userInput number
-} int primeNumbers(int num, bool is_prime){
-    while(num > 0){
-        is_prime = true;
-
-        if(num == 0 || num == 1){
-            is_prime = false;
+}
+bool primeInteger(int n){
+    if (n <= 1){
+        return false;
+    } for (int i = 2; i < n; i++){
+        if (n % i == 0) {
+            return false;
+        } return true;
+    }
+}//eo func, prime algo
+int printPrime(int n){
+    cout << "The prime numbers are: " << endl;
+    for(int i = 2; i<= n; i++){
+        if(primeInteger(i)){
+            cout  << i << " ";
         }
-        for (int i = 2; i <= num/2; ++i) {
-            if (num % i == 0) {
-                is_prime = false;
-                break;
-            }
-            if (is_prime){
-                cout << num << ", ";
-                ++ num;
-            }
-        }
-    }//while loop done
-    return num;
+    }
+    return n;
 }
 
 int main() {
@@ -53,8 +50,6 @@ int main() {
     int option2 = 2;
     int enterInt;
     string userContinue;
-
-    menu();
 
     cout << "Enter your choice: " << endl;
     cin >> userChoice;
@@ -75,23 +70,18 @@ int main() {
         cout << "Enter an integer: ";
         cin >> userPrimeInt;
 
-        int z;
-        z= primeNumbers(userPrimeInt, true);
-        cout <<"The prime numbers are: " << z << endl;
+        printPrime(userPrimeInt); //calling function
+
     }
     else {
         cout << "You did not enter a valid number. " << endl;
         //where ask, continue or quit
         do{
-
             cout << "Would you like to continue (enter 'yes', 'y', 'no', or 'n'): ";
             cin >> userContinue;
 
             //add functionality to make the menu pop up again. if 1 do... if 2 do
-        } while((userContinue == "yes") || (userContinue == "y"));
-
-    }
-
+        } while((userContinue == "yes") || (userContinue == "y")); 
 
 
 
